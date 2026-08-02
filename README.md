@@ -3,8 +3,10 @@ A data structure that can hold many dynamic types - Made in C!
 
 ## About
 `GenericItem` is a data structure that can hold `ints`, `char` and even custom data structures!
+This project was mainly made for my learning but it's actually very useful.
 
-Note that intrisics/SIMD are used and only machines with `AVX2` are supported at the moment.
+> [!IMPORTANT]
+> Intrisics/SIMD are used and only machines with `AVX2` are supported at the moment. (Although most x86-64 machines should)
 
 
 ## Data Structures/Types
@@ -27,7 +29,7 @@ Custom Data Structures (found in `src`):
     - `BST *`
 
 
-### Example
+## Example
 Want to see this in action?
 
 Here's a little JSON-Parser that I made using `GenericItem`.
