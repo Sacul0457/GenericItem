@@ -27,7 +27,45 @@ Custom Data Structures (found in [`src`](src/) & [`include`](include/)):
 
 
 ## Example
-Want to see this in action? Here's a little JSON-Parser that I made using `GenericItem`.
+Here's a little example of how you can use it
+```c
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdio.h>
+
+#include "complex_generic_item.h"
+#include "arena.h"
+#include "vector.h"
+#include "hashmap.h"
+
+int main() {
+    Arena *arena = arena_init();
+    if (arena == NULL) {
+        return -1;
+    }
+
+    Vector *vector = vector_init(arena);
+    if (vector == NULL) {
+        goto cleanup;
+    }
+
+    vector_append_item(arena, vector, convert_item(10));
+    vector_append_item(arena, vector, convert_item("Sacul"));
+
+    HashMap *map = map_init(arena);
+    if (map == NULL) {
+        goto cleanup;
+    }
+    map_insert_item(arena, map, convert_item("spider"), convert_item("man"));
+    vector_append_item(arena, vector, convert_item(map));
+
+    print_item(convert_item(vector)); // [10, "Sacul", {"spider": "man", }, ]
+cleanup:
+    arena_destroy(arena);
+}
+```
+
+Want a more complex use case? Here's a little JSON-Parser that I made using `GenericItem`!
 
 First, run this in the root directory which compiles the example:
 ```sh

@@ -145,8 +145,7 @@ dlinked_list_append_left(Arena *arena, DLinkedList *list, GenericItem value)
     }
     else {
         if (list->head->size == DNODE_VALUES_CAPACITY) {
-            DNode *new_node = _split_node_and_insert(arena, list->head, 0, value);
-            assert(new_node != NULL);
+            assert(_split_node_and_insert(arena, list->head, 0, value) != NULL);
         }
         else {  
             _move_node_values_and_insert(list->head, 0, value);
