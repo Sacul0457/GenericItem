@@ -105,7 +105,7 @@ radix_sort(Arena *arena, Vector *array)
 
     for (size_t i = 0; i < array->size; i++) {
         GenericItem item = array->array[i];
-        assert(item != NULL && item.tp == INTEGER);
+        assert(item.tp == INTEGER);
 
         int num = item.data.integer;
         Vector *vector = &bucket->vectors[num % 10];
@@ -128,7 +128,7 @@ radix_sort(Arena *arena, Vector *array)
             Vector *vector = &bucket->vectors[i];
             for (size_t j = 0; j < vector->size; j++) {
                 GenericItem item = vector->array[j];
-                assert(item != NULL && item.tp == INTEGER);
+                assert(item.tp == INTEGER);
                 Vector *curr_vector = &new_bucket->vectors[(item.data.integer / place) % 10];
                 vector_append_item(arena, curr_vector, item);
             }
