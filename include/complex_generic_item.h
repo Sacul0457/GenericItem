@@ -142,7 +142,7 @@ convert_queue(Queue *value)
 static inline GenericItem
 convert_db_linked_list(DLinkedList *value)
 {
-    return (GenericItem){.data.db_list=value, .tp=QUEUE};
+    return (GenericItem){.data.db_list=value, .tp=DB_LINKED_LIST};
 }
 
 // macro for easy conversion
